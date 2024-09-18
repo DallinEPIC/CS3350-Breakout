@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 172701395}
   - component: {fileID: 172701394}
   m_Layer: 0
-  m_Name: MinX
+  m_Name: MinPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,7 +199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172701393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.88, y: 0, z: 0}
+  m_LocalPosition: {x: -8.88, y: -5, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78fa0cffe44d5c34fbe91d2349830f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
+  _maxHorizontalSpeed: 4
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 1575342970}
   - component: {fileID: 1575342969}
   m_Layer: 0
-  m_Name: MaxX
+  m_Name: MaxPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -581,7 +581,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575342968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.89, y: 0, z: 0}
+  m_LocalPosition: {x: 8.89, y: 5, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -685,9 +685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a66093b46b1614d98f973dda211de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 0, b: 0, a: 1}
   StartPosition: {x: 0, y: -4, z: 0}
   StartScale: {x: 2, y: 0.5, z: 1}
   Speed: 10
-  MaxPositionX: {fileID: 1575342968}
-  MinPositionX: {fileID: 172701393}
+  MaxPosition: {fileID: 1575342968}
+  MinPosition: {fileID: 172701393}
