@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BallBehaviour : MonoBehaviour
 {
-    private Vector3 Velocity;
-    private PaddleController _paddle;
+    [SerializeField] public Vector3 Velocity;
     [SerializeField] public float _maxHorizontalSpeed;
+    private PaddleController _paddle;
 
     private Vector3 _paddleSize, _paddlePos, _ballSize, _ballPos;
 
     void Start()
     {
-        Velocity = Vector3.down;
+        Velocity = Vector3.down * 4;
     }
 
     void Update()
@@ -42,6 +42,11 @@ public class BallBehaviour : MonoBehaviour
         if (_ballPos.y + _ballSize.y / 2f > PaddleController.Instance.MaxPosition.transform.position.y)
         {
             Velocity.y = -Velocity.y;
+        }
+
+        if (_ballPos.y + _ballSize.y / 2f < PaddleController.Instance.MinPosition.transform.position.y)
+        {
+            GameManager.Instance.BallOutOfBounds(gameObject);
         }
 
         transform.position += Velocity * Time.deltaTime;
