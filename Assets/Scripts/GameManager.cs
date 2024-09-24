@@ -7,16 +7,20 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [HideInInspector] public bool GameRunning;
     public GameObject BallPrefab;
     public float RespawnTimer;
     [SerializeField] [Range(0,15)] private int _maxRespawns;
     private int _respawnCount;
+    [SerializeField] private GameObject _losePanel;
 
     [SerializeField] private TextMeshProUGUI _ballText;
 
     // Start is called before the first frame update
     void Start()
     {
+        _losePanel.SetActive(false); 
+        GameRunning = true;
         Instantiate(BallPrefab);
         Instance = this;
         UpdateBallText();
@@ -34,6 +38,11 @@ public class GameManager : MonoBehaviour
 
         if (_respawnCount < _maxRespawns)
             StartCoroutine(WaitAndRespawn());
+        else
+        {
+            GameRunning = false;
+            _losePanel.SetActive(true);
+        }
     }
     private IEnumerator WaitAndRespawn()
     {
