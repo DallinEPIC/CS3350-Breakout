@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,7 +30,6 @@ public class GameManager : MonoBehaviour
         Instantiate(BallPrefab);
         Instance = this;
         UpdateBallText();
-        RandomizeBrickColors();
     }
 
     // Update is called once per frame
@@ -76,9 +76,13 @@ public class GameManager : MonoBehaviour
 
     public void RandomizeBrickColors()
     {
-        foreach (GameObject brick in Bricks)
+        for (int i = 0; i < GameManager.Instance.Bricks.Length; i++)
         {
-            brick.GetComponent<SpriteRenderer>().color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1);
+            if (GameManager.Instance.Bricks[i] != null)
+            {
+                GameManager.Instance.Bricks[i].GetComponent<SpriteRenderer>().color =
+                    new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1);
+            }
         }
     }
 }

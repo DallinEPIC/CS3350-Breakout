@@ -13,20 +13,21 @@ public class BallBehaviour : MonoBehaviour
 
     void Start()
     {
-        Velocity = Vector3.down * 4;
+        Velocity = Vector3.down * 5;
     }
 
     void Update()
     {
         if (!GameManager.Instance.GameRunning) return;
 
-            _ballSize = transform.localScale;
+        _ballSize = transform.localScale;
         _ballPos = transform.position;
 
         if (CollidesWithGameObject(PaddleController.Instance.gameObject))
         {
             Velocity.y = -Velocity.y;
-            Velocity.x = UnityEngine.Random.Range(-_maxHorizontalSpeed, _maxHorizontalSpeed);
+            Vector3 PaddleToBall = transform.position - PaddleController.Instance.transform.position;
+            Velocity.x = PaddleToBall.x * _maxHorizontalSpeed;
         }
 
         for(int i = 0; i < GameManager.Instance.Bricks.Length; i++)
